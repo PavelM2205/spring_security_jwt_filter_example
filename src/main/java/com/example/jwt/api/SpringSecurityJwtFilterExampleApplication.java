@@ -1,5 +1,6 @@
 package com.example.jwt.api;
 
+import com.example.jwt.api.model.Role;
 import com.example.jwt.api.model.User;
 import com.example.jwt.api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,9 @@ public class SpringSecurityJwtFilterExampleApplication {
     @PostConstruct
     public void initUsers() {
         List<User> users = List.of(
-                new User(1, "Pavel", passwordEncoder.encode("password1"), "pavel@mail"),
-                new User(2, "Ivan", passwordEncoder.encode("password2"), "ivan@mail"),
-                new User(3, "Petr", passwordEncoder.encode("password3"), "petr@mail")
+                new User(1, "Pavel", passwordEncoder.encode("password1"), "pavel@mail", Role.ADMIN),
+                new User(2, "Ivan", passwordEncoder.encode("password2"), "ivan@mail", Role.USER),
+                new User(3, "Petr", passwordEncoder.encode("password3"), "petr@mail", Role.USER)
 
         );
         userRepository.saveAll(users);

@@ -7,8 +7,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
@@ -22,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .map(user -> new org.springframework.security.core.userdetails.User(
                         user.getName(),
                         user.getPassword(),
-                        new ArrayList<>()
+                        user.getRole().getAuthorities()
                 )).orElseThrow(() -> new UsernameNotFoundException(
                         "User with name %s not found".formatted(username)));
     }
