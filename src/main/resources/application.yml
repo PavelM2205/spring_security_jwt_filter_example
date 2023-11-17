@@ -1,0 +1,15 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    generate-unique-name: false
+    name: users
+
+server:
+  port: 9192
+
+jwt:
+  secret: 9aaa4aba-6c85-4524-a72a-1021caf2e025
+  expiration-term: 36_000_000
+
